@@ -49,7 +49,7 @@
         #region Windows Form Designer generated code
 
         /// <summary>
-        /// Required method for Designer support; do not modify
+        /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
@@ -311,6 +311,7 @@
             this.comboManufacturer.Name = "comboManufacturer";
             this.comboManufacturer.Size = new System.Drawing.Size(280, 23);
             this.comboManufacturer.TabIndex = 7;
+            this.comboManufacturer.SelectedIndexChanged += new System.EventHandler(this.ComboBoxManufacturer_SelectedIndexChanged);
             // 
             // lblManufacturer
             // 
@@ -406,7 +407,6 @@
             this.Name = "UpdateForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Update Form";
-            this.Load += new System.EventHandler(this.UpdateForm_Load);
             this.panelMain.ResumeLayout(false);
             this.panelMain.PerformLayout();
             this.gbWiFi.ResumeLayout(false);

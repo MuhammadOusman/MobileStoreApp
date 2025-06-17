@@ -155,7 +155,6 @@
             this.dgvCustomers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvCustomers.Size = new System.Drawing.Size(948, 252);
             this.dgvCustomers.TabIndex = 15;
-            this.dgvCustomers.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomers_CellContentDoubleClick);
             // 
             // txtName
             // 
@@ -203,7 +202,7 @@
             this.btnAddCustomer.TabIndex = 10;
             this.btnAddCustomer.Text = "ADD";
             this.btnAddCustomer.UseVisualStyleBackColor = false;
-            this.btnAddCustomer.Click += new System.EventHandler(this.btnAddCustomer_Click);
+            this.btnAddCustomer.Click += new System.EventHandler(this.BtnAddCustomer_Click);
             // 
             // btnSearch
             // 
@@ -218,7 +217,7 @@
             this.btnSearch.TabIndex = 12;
             this.btnSearch.Text = "SEARCH";
             this.btnSearch.UseVisualStyleBackColor = false;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            this.btnSearch.Click += new System.EventHandler(this.BtnSearch_Click);
             // 
             // btnUpdateCustomer
             // 
@@ -233,7 +232,7 @@
             this.btnUpdateCustomer.TabIndex = 13;
             this.btnUpdateCustomer.Text = "UPDATE";
             this.btnUpdateCustomer.UseVisualStyleBackColor = false;
-            this.btnUpdateCustomer.Click += new System.EventHandler(this.btnUpdateCustomer_Click);
+            this.btnUpdateCustomer.Click += new System.EventHandler(this.BtnUpdateCustomer_Click);
             // 
             // lblName
             // 
@@ -326,7 +325,7 @@
             this.comboModel.Name = "comboModel";
             this.comboModel.Size = new System.Drawing.Size(180, 23);
             this.comboModel.TabIndex = 4;
-            this.comboModel.SelectedIndexChanged += new System.EventHandler(this.comboModel_SelectedIndexChanged);
+            this.comboModel.SelectedIndexChanged += new System.EventHandler(this.ComboModel_SelectedIndexChanged);
             // 
             // radioBluetoothYes
             // 
@@ -552,7 +551,6 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mobile Store";
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCustomers)).EndInit();
             this.gbBluetooth.ResumeLayout(false);
             this.gbBluetooth.PerformLayout();
