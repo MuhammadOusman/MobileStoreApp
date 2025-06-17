@@ -160,27 +160,40 @@ namespace MobileStoreApp
         {
             try
             {
-                string query = "UPDATE Orders SET ModelID=@ModelID, BlueTooth=@BlueTooth, FMRadio=@FMRadio, Camera=@Camera, WiFi=@WiFi WHERE CustomerID=@customerId";
-                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (SqlConnection connection = new SqlConnection(conn.ConnectionString))
                 {
-                    cmd.Parameters.AddWithValue("@ModelID", comboModel.SelectedValue);
-                    cmd.Parameters.AddWithValue("@BlueTooth", radioBluetoothYes.Checked ? "YES" : "NO");
-                    cmd.Parameters.AddWithValue("@FMRadio", radioFMRadioYes.Checked ? "YES" : "NO");
-                    cmd.Parameters.AddWithValue("@Camera", radioCameraYes.Checked ? "YES" : "NO");
-                    cmd.Parameters.AddWithValue("@WiFi", radioWiFiYes.Checked ? "YES" : "NO");
-                    cmd.Parameters.AddWithValue("@customerId", customerId);
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                    conn.Close();
+                    connection.Open();
+
+                    // Update Customers table
+                    string queryCustomer = "UPDATE Customers SET CustomerName=@CustomerName, PhoneNo=@PhoneNo WHERE CustomerID=@customerId";
+                    using (SqlCommand cmdCustomer = new SqlCommand(queryCustomer, connection))
+                    {
+                        cmdCustomer.Parameters.AddWithValue("@CustomerName", txtName.Text);
+                        cmdCustomer.Parameters.AddWithValue("@PhoneNo", txtPhone.Text);
+                        cmdCustomer.Parameters.AddWithValue("@customerId", customerId);
+                        cmdCustomer.ExecuteNonQuery();
+                    }
+
+                    // Update Orders table
+                    string queryOrder = "UPDATE Orders SET ModelID=@ModelID, BlueTooth=@BlueTooth, FMRadio=@FMRadio, Camera=@Camera, WiFi=@WiFi WHERE CustomerID=@customerId";
+                    using (SqlCommand cmdOrder = new SqlCommand(queryOrder, connection))
+                    {
+                        cmdOrder.Parameters.AddWithValue("@ModelID", comboModel.SelectedValue);
+                        cmdOrder.Parameters.AddWithValue("@BlueTooth", radioBluetoothYes.Checked ? "YES" : "NO");
+                        cmdOrder.Parameters.AddWithValue("@FMRadio", radioFMRadioYes.Checked ? "YES" : "NO");
+                        cmdOrder.Parameters.AddWithValue("@Camera", radioCameraYes.Checked ? "YES" : "NO");
+                        cmdOrder.Parameters.AddWithValue("@WiFi", radioWiFiYes.Checked ? "YES" : "NO");
+                        cmdOrder.Parameters.AddWithValue("@customerId", customerId);
+                        cmdOrder.ExecuteNonQuery();
+                    }
+
+                    MessageBox.Show("Customer settings updated successfully.");
+                    this.Close();
                 }
-                MessageBox.Show("Customer settings updated successfully.");
-                this.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error updating settings: " + ex.Message);
-                if (conn.State == ConnectionState.Open)
-                    conn.Close();
             }
         }
     }

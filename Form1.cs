@@ -514,5 +514,15 @@ namespace MobileStoreApp
             radioWifiYes.Checked = false;
             radioWifiNo.Checked = false;
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboModel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
